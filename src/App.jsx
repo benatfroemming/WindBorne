@@ -29,8 +29,11 @@ export default function App() {
 
   // Fetch balloon positions
   const fetchBalloonData = async () => {
-    const baseUrl = import.meta.env.DEV ? '/treasure' : 'https://a.windbornesystems.com';
-    const urls = Array.from({ length: 24 }, (_, i) => `${baseUrl}/${i.toString().padStart(2,'0')}.json`);
+    const baseUrl = '/treasure'; 
+
+    const urls = Array.from({ length: 24 }, (_, i) =>
+      `${baseUrl}/${i.toString().padStart(2,'0')}.json`
+    );
 
     const results = await Promise.allSettled(
       urls.map(u =>
