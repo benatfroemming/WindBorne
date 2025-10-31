@@ -6,7 +6,7 @@ Deployed on GitHub Pages: [https://benatfroemming.github.io/WindBorne](https://b
 
 ---
 
-## 🚀 Features
+## Features 🚀
 
 - **Hourly Animation & Time Slider**
   - Displays all active weather balloons as colored circles on a MapLibre GL map.  
@@ -32,15 +32,13 @@ Deployed on GitHub Pages: [https://benatfroemming.github.io/WindBorne](https://b
 - **Map Rendering**: MapLibre GL JS  
 - **Charts**: Plotly.js  
 - **Data Sources**:  
-  - Balloon positions fetched hourly (JSON)  
+  - Balloon positions fetched hourly [Sample]([https://open-meteo.com/](https://a.windbornesystems.com/treasure/00.json)   
   - Local wind data from [Open-Meteo](https://open-meteo.com/)  
 - **Hosting**: GitHub Pages  
 
 ---
 
 ## ⚙️ Local Development
-
-1. **Clone the repo**
 
 ```bash
 git clone https://github.com/benatfroemming/WindBorne.git
