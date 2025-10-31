@@ -29,9 +29,9 @@ export default function App() {
 
   // Fetch balloon positions
   const fetchBalloonData = async () => {
-  const baseUrl = import.meta.env.DEV
-    ? '/treasure'                   
-    : 'https://a.windbornesystems.com/treasure'; 
+    const baseUrl = import.meta.env.DEV
+      ? '/treasure'
+      : 'https://cors-anywhere.herokuapp.com/https://a.windbornesystems.com/treasure';
 
     const urls = Array.from({ length: 24 }, (_, i) =>
       `${baseUrl}/${i.toString().padStart(2,'0')}.json`
