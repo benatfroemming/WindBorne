@@ -30,11 +30,11 @@ export default function App() {
   // Fetch balloon positions
   const fetchBalloonData = async () => {
     const baseUrl = import.meta.env.DEV
-      ? '/treasure'
-      : 'https://cors-anywhere.herokuapp.com/https://a.windbornesystems.com/treasure';
+      ? '/treasure' 
+      : 'https://windborneproject.vercel.app/api/proxy';
 
     const urls = Array.from({ length: 24 }, (_, i) =>
-      `${baseUrl}/${i.toString().padStart(2,'0')}.json`
+      `${baseUrl}?file=${i.toString().padStart(2,'0')}.json`
     );
 
     const results = await Promise.allSettled(
