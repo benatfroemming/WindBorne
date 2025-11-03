@@ -39,7 +39,7 @@ Deployed on GitHub Pages: [https://benatfroemming.github.io/WindBorne](https://b
 - **Data Sources**:  
   - Balloon positions fetched hourly [Sample](https://a.windbornesystems.com/treasure/00.json) 
   - Local wind data from [Open-Meteo](https://open-meteo.com/)  
-- **Hosting**: GitHub Pages  
+- **Hosting**: Vercel
 
 ---
 
