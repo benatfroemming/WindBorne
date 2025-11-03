@@ -24,7 +24,7 @@ Live interactive demo: [https://windborneproject.vercel.app/](https://windbornep
 - **Interactive Plots with Plotly**  
   - Altitude, speed, direction, wind speed, and wind direction charts update dynamically.  
 
-- **Predict Future Hour Position Proof of Concept**
+- **ML based Future Hour Position Prediction Proof of Concept**
   - Uses a linear regression model trained on 100 24h balloon trajectories.
   - Features: Deltas between consecutive points and wind conditions computed over the last 21 hours.
   - Predicts the next position (latitude, longitude, altitude) for the selected balloon.
