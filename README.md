@@ -30,7 +30,7 @@ Live interactive demo: [https://windborneproject.vercel.app/](https://windbornep
   - Predicts the next position (latitude, longitude, altitude) for the selected balloon.
   - Visualized as a dashed purple line extending from the current balloon location.
  
-  <img width="660" height="687" alt="image" src="https://github.com/user-attachments/assets/1accd03f-1bba-4c89-b565-ea45fa5f2276" />
+  <img width="330" height="344" alt="image" margin-top="20" src="https://github.com/user-attachments/assets/1accd03f-1bba-4c89-b565-ea45fa5f2276" />
 
 ---
 
