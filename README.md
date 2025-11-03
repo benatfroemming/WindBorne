@@ -24,6 +24,11 @@ Deployed on GitHub Pages: [https://benatfroemming.github.io/WindBorne](https://b
 - **Interactive Plots with Plotly**  
   - Altitude, speed, direction, wind speed, and wind direction charts update dynamically.  
 
+  **Predict Future Hour Position Proof of Concept**
+  - Uses a linear regression model trained on 100 24h balloon trajectories.
+  - Features: Deltas between consecutive points and wind conditions computed over the last 21 hours.
+  - Predicts the next position (latitude, longitude, altitude) for the selected balloon.
+  - Visualized as a dashed purple line extending from the current balloon location.
 ---
 
 ## Tech Stack 🛠️
