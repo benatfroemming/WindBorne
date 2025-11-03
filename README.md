@@ -2,7 +2,7 @@
 
 This repository hosts an interactive web application that displays the global positions of WindBorne balloons over the past 24 hours in real time. It provides detailed analytics and visualizations for each balloon, including altitude, speed, direction, and local wind conditions, offering insights into how wind affects their trajectories. Additionally, the visualizations allow for assessment of telematics data consistency and reliability, making it a valuable tool for refining and improving the data pipeline.
 
-Deployed on GitHub Pages: [https://benatfroemming.github.io/WindBorne](https://benatfroemming.github.io/WindBorne)
+Deployed on GitHub Pages: [https://windborneproject.vercel.app/](https://windborneproject.vercel.app/)
 
 ---
 
