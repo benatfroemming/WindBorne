@@ -50,6 +50,7 @@ export default function App() {
   const [selectedBalloon, setSelectedBalloon] = useState(0);
   const [showAll, setShowAll] = useState(true);
   const [modelData, setModelData] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Load model coefficients
   useEffect(() => {
@@ -189,13 +190,25 @@ export default function App() {
   // Map initialization
   useEffect(() => {
     if (!mapContainer.current) return;
+
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: protomap,
+      style: protomap, // compatible with globe
       center: [0, 0],
-      zoom: 1,
+      zoom: 2,
     });
+
+    map.current.addControl(new maplibregl.GlobeControl(), "top-left");
+
+    map.current.on("style.load", () => {
+      if (map.current.setProjection) {
+        map.current.setProjection({ type: "globe" });
+      }
+    });
+
     fetchBalloonData();
+
+    return () => map.current.remove();
   }, []);
 
   useEffect(() => {
@@ -326,24 +339,36 @@ export default function App() {
 
   return (
     <div style={{ width: "100vw", height: "100vh", display: "flex", position: "relative" }}>
-      <div ref={mapContainer} style={{ flex: 1 }} />
-
-      {/* Controls Overlay */}
+      {/* Map container */}
       <div
+        ref={mapContainer}
         style={{
-          position: "absolute",
-          bottom: "1rem",
-          left: "1rem",
-          background: "rgba(255, 255, 255, 0.95)",
-          borderRadius: 12,
-          boxShadow: "0 3px 8px rgba(0,0,0,0.2)",
-          padding: 14,
-          fontSize: 14,
-          zIndex: 1000,
+          width: sidebarOpen ? "calc(100vw - 400px)" : "100vw",
+          transition: "width 0.3s ease",
+        }}
+      />
+
+      {/* Sidebar toggle button */}
+      <div
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        style={{
+          position: "fixed",
+          top: 20,
+          right: sidebarOpen ? 400 : 0,
+          zIndex: 1100,
+          width: 30,
+          height: 60,
+          background: "#f8f9fa",
+          borderRadius: "4px 0 0 4px",
+          borderRight: "solid #e0e0e0ff 2px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+          transition: "right 0.3s ease",
         }}
       >
-
-        <Legend />
+        <span style={{ transform: sidebarOpen ? "rotate(180deg)" : "none" }}>▶</span>
       </div>
 
       {/* Sidebar */}
@@ -353,7 +378,7 @@ export default function App() {
           height: "100%",
           position: "fixed",
           top: 0,
-          right: 0,
+          right: sidebarOpen ? 0 : -400,
           background: "#f8f9fa",
           overflowY: "auto",
           padding: 20,
@@ -362,6 +387,7 @@ export default function App() {
           display: "flex",
           flexDirection: "column",
           gap: 20,
+          transition: "right 0.3s ease",
         }}
       >
         <h3>Balloon and Wind Tracker</h3>
@@ -427,6 +453,23 @@ export default function App() {
           </>
         )}
       </div>
+
+      {/* Controls Overlay */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "1rem",
+          left: "1rem",
+          background: "rgba(255, 255, 255, 0.95)",
+          borderRadius: 12,
+          boxShadow: "0 3px 8px rgba(0,0,0,0.2)",
+          padding: 14,
+          fontSize: 14,
+          zIndex: 1000,
+        }}
+      >
+        <Legend />
+      </div>
     </div>
   );
 }
@@ -483,7 +526,7 @@ function PlotChart({ title, y, color }) {
       <Plot
         data={[{ x: y.map((_, i) => i), y, type: "scatter", mode: "lines+markers", marker: { color } }]}
         layout={{ width: 360, height: 150, margin: { t: 20, b: 30, l: 50, r: 10 } }}
-        style={{marginTop: '10px'}}
+        style={{ marginTop: "10px" }}
       />
     </div>
   );
