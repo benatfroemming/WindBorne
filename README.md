@@ -31,6 +31,11 @@ Live interactive demo: [https://windborneproject.vercel.app/](https://windbornep
   - Visualized as a dashed purple line extending from the current balloon location.
 ---
 
+## Future Work
+  - Add more features to train the model besides location and wind.  
+  - Use a better architecture instead of a basic regression that captures time series data, such as RNN.
+---
+
 ## Tech Stack 🛠️
 
 - **Frontend**: React + Vite  
